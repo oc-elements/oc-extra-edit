@@ -1,0 +1,55 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
+
+<!--
+`oc-extra-edit`
+Element for editing product extra details
+@demo demo/index.html
+-->
+
+<dom-module id="oc-extra-edit">
+
+  <style>
+    :host {
+      display: block;
+    }
+    paper-button {
+      margin: 10px
+    }
+  </style>
+
+  <template>
+    <paper-input id="inputName" label="Name" required auto-validate error-message="Please provide a name"></paper-input>
+    <paper-input id="inputDescription" label="Description" required auto-validate error-message="Please provide a description"></paper-input>
+    <paper-input id="inputPrice" label="Price" required auto-validate error-message="Please provide a price"></paper-input>
+    <paper-button on-tap="_onOk" >Save Extra</paper-button>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'oc-extra-edit',
+
+      setExtra: function(extra) {
+        this.$.inputName.value = extra.name;
+        this.$.inputDescription.value = extra.description;
+        this.$.inputPrice.value = extra.price;
+      },
+
+      _onOk: function() {
+        if (this._valid) {
+          this.fire('save', {
+            name: this.$.inputName.value,
+            description: this.$.inputDescription.value,
+            price: this.$.inputPrice.value
+          });
+        }
+      },
+
+      _valid: function() {
+        return !(this.$.inputName.invalid || this.$.inputPrice.invalid || this.$.inputDescription.invalid);
+      }
+    });
+  </script>
+</dom-module>

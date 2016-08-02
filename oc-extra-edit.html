@@ -38,6 +38,7 @@ Element for editing product extra details
       is: 'oc-extra-edit',
 
       setExtra: function(extra) {
+        this._extra = extra;
         this.$.inputName.value = extra.name;
         this.$.inputDescription.value = extra.description;
         this.$.inputPrice.value = extra.price;
@@ -46,9 +47,11 @@ Element for editing product extra details
       _onOk: function() {
         if (this._valid) {
           this.fire('save', {
+            id: this._extra.id,
             name: this.$.inputName.value,
             description: this.$.inputDescription.value,
-            price: this.$.inputPrice.value
+            price: this.$.inputPrice.value,
+            setId: this._extra.setId
           });
         }
       },

@@ -18,13 +18,19 @@ Element for editing product extra details
     paper-button {
       margin: 10px
     }
+    paper-material {
+      background-color: #fff;
+      padding: 10px;
+    }
   </style>
 
   <template>
-    <paper-input id="inputName" label="Name" required auto-validate error-message="Please provide a name"></paper-input>
-    <paper-input id="inputDescription" label="Description" required auto-validate error-message="Please provide a description"></paper-input>
-    <paper-input id="inputPrice" label="Price" required auto-validate error-message="Please provide a price"></paper-input>
-    <paper-button on-tap="_onOk" >Save Extra</paper-button>
+    <paper-material>
+      <paper-input id="inputName" label="Name" required auto-validate error-message="Please provide a name"></paper-input>
+      <paper-input id="inputDescription" label="Description" required auto-validate error-message="Please provide a description"></paper-input>
+      <paper-input id="inputPrice" label="Price" required auto-validate error-message="Please provide a price"></paper-input>
+      <paper-button on-tap="_onOk" >Save Extra</paper-button>
+    </paper-material>
   </template>
 
   <script>
